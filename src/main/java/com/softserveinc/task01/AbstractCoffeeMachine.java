@@ -1,9 +1,9 @@
 package com.softserveinc.task01;
 
 public abstract class AbstractCoffeeMachine {
-    private final int coffeeBeanStorageCapacity;
-    private final int waterReservoirCapacity;
-    private final int wasteCoffeeBeanCapacity;
+    protected final int coffeeBeanStorageCapacity;
+    protected final int waterReservoirCapacity;
+    protected final int wasteCoffeeBeanCapacity;
 
     private int coffee;
     private int water;
@@ -18,11 +18,11 @@ public abstract class AbstractCoffeeMachine {
     }
 
     public void addWater(int water) {
-        this.water = Math.min(water, waterReservoirCapacity);
+        this.water = Math.min(water + this.water, waterReservoirCapacity);
     }
 
     public void addCoffeeBeans(int coffee) {
-        this.coffee = Math.min(coffee, coffeeBeanStorageCapacity);
+        this.coffee = Math.min(coffee + this.coffee, coffeeBeanStorageCapacity);
     }
 
     public void throwAwayWaste() {
@@ -47,9 +47,19 @@ public abstract class AbstractCoffeeMachine {
 
     protected boolean makeCoffee(int coffee, int water) {
         if (!isOn) {
+            System.err.println("Coffee machine is off");
             return false;
         }
-        if (coffee > this.coffee || water > this.water || waste >= wasteCoffeeBeanCapacity) {
+        if (coffee > this.coffee) {
+            System.err.println("Not enough coffee");
+            return false;
+        }
+        if (water > this.water) {
+            System.err.println("Not enough water");
+            return false;
+        }
+        if (waste > wasteCoffeeBeanCapacity) {
+            System.err.println("The storage of waste is full");
             return false;
         }
         this.coffee -= coffee;
