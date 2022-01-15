@@ -76,4 +76,16 @@ public abstract class AbstractCoffeeMachine {
         isOn = false;
     }
 
+    @Override
+    public String toString() {
+        return "AbstractCoffeeMachine{" +
+                "coffeeBeanStorageCapacity=" + coffeeBeanStorageCapacity +
+                ", waterReservoirCapacity=" + waterReservoirCapacity +
+                ", wasteCoffeeBeanCapacity=" + wasteCoffeeBeanCapacity +
+                ", coffee=" + coffee +
+                ", water=" + water +
+                ", waste=" + waste +
+                ", isOn=" + isOn +
+                '}';
+    }
 }
