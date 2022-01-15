@@ -1,8 +1,5 @@
 package com.softserveinc;
 
-import com.softserveinc.task02.CityTest;
-import org.junit.jupiter.api.Assertions;
-
 import java.lang.reflect.*;
 import java.util.Random;
 import java.util.stream.Stream;
