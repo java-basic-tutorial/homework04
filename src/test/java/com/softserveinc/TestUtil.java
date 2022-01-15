@@ -60,6 +60,13 @@ public class TestUtil {
         Field declaredField = clazz.getDeclaredField(fieldName);
         assertEquals(fieldType, declaredField.getType(), "Поле должно быть типа " + declaredField);
     }
+    public static void hasFinalProtectedNoStaticField(Class<?> clazz, String fieldName, Class<?> fieldType) throws NoSuchFieldException {
+        Field declaredField = clazz.getDeclaredField(fieldName);
+        assertTrue(Modifier.isProtected(declaredField.getModifiers()), "Поле должно быть protected");
+        assertFalse(Modifier.isStatic(declaredField.getModifiers()), "Поле не должно быть статическими");
+        assertTrue(Modifier.isFinal(declaredField.getModifiers()), "Поле должно быть final");
+        assertEquals(fieldType, declaredField.getType(), "Поле должно быть типа " + declaredField);
+    }
 
     public static void hasPublicNoStaticMethod(Class<?> clazz, String methodName, Class<?>... parameterTypes) throws NoSuchMethodException {
         Method declaredMethod = clazz.getDeclaredMethod(methodName, parameterTypes);

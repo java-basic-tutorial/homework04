@@ -158,7 +158,7 @@ public class CoffeeMachineV1Test {
     }
 
     @Test
-    @DisplayName("Should not make Espresso")
+    @DisplayName("Should not make Americano")
     void shouldNotMakeAmericano() throws NoSuchMethodException, ClassNotFoundException, IllegalAccessException, InvocationTargetException, InstantiationException {
         Class<?> cls = Class.forName(CLASS_NAME);
         Constructor<?>[] declaredConstructors = cls.getDeclaredConstructors();
