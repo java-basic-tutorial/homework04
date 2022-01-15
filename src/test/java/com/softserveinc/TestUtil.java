@@ -19,11 +19,7 @@ public class TestUtil {
 
     public static Object getExpected(Class<?> clazz) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         Class<?> cityClass = null;
-        try {
-            cityClass = Class.forName(CityTest.CLASS_NAME);
-        } catch (ClassNotFoundException ex) {
-            cityClass = TestUtil.class; // dummy
-        }
+
         if (int.class.equals(clazz)) {
             return rnd.nextInt(800_000);
         } else if (String.class.equals(clazz)) {
