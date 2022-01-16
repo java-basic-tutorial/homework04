@@ -1,6 +1,9 @@
 # homework04
 
-Inheritance. Generics. Collections
+## Inheritance. Generics. Collections
+
+The first homework was dedicated 
+
 
 ## Task 01
 
