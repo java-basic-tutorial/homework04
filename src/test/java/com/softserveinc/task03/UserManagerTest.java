@@ -8,10 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import java.lang.reflect.*;
 import java.util.Set;
 
 import static com.softserveinc.TestUtil.*;
@@ -42,8 +39,13 @@ public class UserManagerTest {
     @Test
     void usersFieldExists() throws NoSuchFieldException {
         hasFinalPrivateNoStaticField(CLAZZ, "users", Set.class);
+        Field users = CLAZZ.getDeclaredField("users");
+        Type genericType = users.getGenericType();
+        ParameterizedType aType = (ParameterizedType) genericType;
+        Type[] typeArguments = aType.getActualTypeArguments();
+        Assertions.assertEquals(1, typeArguments.length);
+        Assertions.assertEquals(User.class, typeArguments[0]);
     }
-
 
     @Test
     void registerMethodExists() throws NoSuchMethodException {
@@ -60,7 +62,7 @@ public class UserManagerTest {
         register.invoke(userManager, login, password);
         Field usersField = CLAZZ.getDeclaredField("users");
         usersField.setAccessible(true);
-        Set users = (Set)usersField.get(userManager);
+        Set users = (Set) usersField.get(userManager);
         Assertions.assertEquals(1, users.size());
         Assertions.assertTrue(users.contains(new User(login, password)));
     }
@@ -78,7 +80,7 @@ public class UserManagerTest {
         String password = "password";
         Field usersField = CLAZZ.getDeclaredField("users");
         usersField.setAccessible(true);
-        Set users = (Set)usersField.get(userManager);
+        Set users = (Set) usersField.get(userManager);
         users.add(new User(login, password));
         Assertions.assertEquals(1, users.size());
         Assertions.assertTrue(users.contains(new User(login, password)));
@@ -100,7 +102,7 @@ public class UserManagerTest {
         String password = "password";
         Field usersField = CLAZZ.getDeclaredField("users");
         usersField.setAccessible(true);
-        Set users = (Set)usersField.get(userManager);
+        Set users = (Set) usersField.get(userManager);
         users.add(new User(login, password));
         Assertions.assertEquals(1, users.size());
         Assertions.assertTrue(users.contains(new User(login, password)));
@@ -123,7 +125,7 @@ public class UserManagerTest {
         String newPassword = "qwerty";
         Field usersField = CLAZZ.getDeclaredField("users");
         usersField.setAccessible(true);
-        Set users = (Set)usersField.get(userManager);
+        Set users = (Set) usersField.get(userManager);
         users.add(new User(login, oldPassword));
         Assertions.assertEquals(1, users.size());
         Assertions.assertTrue(users.contains(new User(login, oldPassword)));
