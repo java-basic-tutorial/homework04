@@ -17,8 +17,9 @@ In this task you will create the first version of Coffee Machine which should ma
 First of all, lets take a look at the class [AbstractCoffeeMachine](src/main/java/com/softserveinc/task01/AbstractCoffeeMachine.java).
 
 This class is abstract and has a few fields and methods. 
+Pay attention at the method `makeCoffee()`. You can use it to make a `Espresso` and `Americano`.
 
-You need to create a public class `CoffeeMachineV1` derived from [AbstractCoffeeMachine](src/main/java/com/softserveinc/task01/AbstractCoffeeMachine.java)
+Create a public class `CoffeeMachineV1` derived from [AbstractCoffeeMachine](src/main/java/com/softserveinc/task01/AbstractCoffeeMachine.java)
 in the package [com.softserveinc.task01](src/main/java/com/softserveinc/task01).
 
 After, you need to implement the abstract methods `makeEspresso()` and `makeAmericano()`. 
@@ -54,7 +55,7 @@ Add the field `milk` (**private integer**) to represent how much milk now is pre
 Add the method `addMilk()` to pour milk in Coffee Machine (see for example how is implemented the method `addWater()` 
 and `addCoffeeBeans()` in the class [AbstractCoffeeMachine](src/main/java/com/softserveinc/task01/AbstractCoffeeMachine.java)).
 
-Add the getter for the field `milk`.
+Add the getter to the field `milk`.
 
 Add the method `makeCappuccino()` intended to simulate making the `Cappuccino`.
 To make `Cappuccino` it is need to make `Espresso` and add `85 ml` of milk.
@@ -81,13 +82,13 @@ Main functionality of the program:
 3. Check if the user exists
 4. Change the password of a user.
 
-You will use existing the class [User](src/main/java/com/softserveinc/task03/User.java).
+You will use the existing class [User](src/main/java/com/softserveinc/task03/User.java).
  
 To do it you should create the public class `UserManager` in package [com.softserveinc.task03](src/main/java/com/softserveinc/task03).
 
 Add the private final field called `users`. It should have the type of `Set<User>`.
 
-Initialize this field in the default constructor (use `HashSet<>`).
+Initialize this field in the default constructor (use `HashSet<>` class).
 
 Add the method `register()` with two parameters: login and password of `String` type.
 Method should create the [User](src/main/java/com/softserveinc/task03/User.java) and save it in the set `users`.
