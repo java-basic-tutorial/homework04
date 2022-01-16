@@ -27,7 +27,7 @@ public class Main {
 //            String oldPassword = scanner.nextLine();
 //            System.out.print("New password: ");
 //            String newPassword = scanner.nextLine();
-//            if (userManager.setPassword(login, oldPassword, newPassword)) {
+//            if (userManager.changePassword(login, oldPassword, newPassword)) {
 //                System.out.println("Your password has been changed");
 //            } else {
 //                System.err.println("Password hasn't been changed because old password incorrect");
